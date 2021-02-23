@@ -41,7 +41,7 @@ class IntListTest extends AnyFunSuite {
   }
 
   test("sum") {
-    assertThrows[UnsupportedOperationException](sum(IntNil))
+    assert(sum(IntNil) == 0)
     assert(sum(fromSeq(Seq(1,2,3))) == 6)
     assert(sum(fromSeq(Seq(1))) == 1)
   }
