@@ -13,7 +13,7 @@ sealed trait IntList {
   def ::(elem: Int): IntList = new IntCons(elem, this)
 }
 
-final class IntCons(override val head: Int, override val tail: IntList) extends IntList {
+final case class IntCons(override val head: Int, override val tail: IntList) extends IntList {
   override def drop(n: Int): IntList = n match {
     case n if n > 0 => tail.drop(n - 1)
     case 0 => this
@@ -25,15 +25,9 @@ final class IntCons(override val head: Int, override val tail: IntList) extends 
     case _ => undef
   }
   override def map(f: Int => Int): IntList = f(head) :: tail.map(f)
-
-  override def equals(obj: Any): Boolean = obj match {
-    case obj: IntCons =>
-      obj.head == obj.head && obj.tail == obj.tail
-    case _ => false
-  }
 }
 
-object IntNil extends IntList {
+case object IntNil extends IntList {
   override lazy val head: Int = undef
   override lazy val tail: IntList = undef
   override def drop(n: Int): IntList = if (n == 0) IntNil else undef
