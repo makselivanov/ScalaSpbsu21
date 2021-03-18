@@ -5,9 +5,6 @@ import org.spbsu.mkn.scala.MyGenericList.{fromSeq, size, sum}
 
 class MyGenericListTest extends AnyFunSuite {
 
-  // remove after implementing actual MyNil
-  object MyNil
-
   test("head") {
     assert(fromSeq(Seq(1,2,3)).head == 1)
     assert(fromSeq(Seq(1)).head == 1)
